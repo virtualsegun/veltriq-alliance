@@ -122,7 +122,11 @@ function initWhatsApp() {
 // file in assets/img/partners/ and set `logo` to its file name.
 // ---------------------------------------------------------------------------
 const PARTNERS = [
+  { name: "Microsoft", focus: "Cloud, productivity & infrastructure", logo: "" },
   { name: "Cisco", focus: "Networking & security", logo: "" },
+  { name: "HP", focus: "Servers, storage & devices", logo: "" },
+  { name: "Aruba", focus: "Wireless & campus networking", logo: "" },
+  { name: "Huawei", focus: "Networking, storage & datacenter", logo: "" },
   { name: "Sophos", focus: "Firewall & endpoint security", logo: "" },
   { name: "Cloudflare", focus: "Web & network security", logo: "" },
   { name: "Veeam", focus: "Backup & recovery", logo: "" },
