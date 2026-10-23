@@ -7,15 +7,15 @@
   <form class="newsletter__form" data-newsletter-form novalidate>
     <div class="newsletter__fields">
       <label class="sr-only" for="nl-name-{{ include.id | default: 'main' }}">First name</label>
-      <input id="nl-name-{{ include.id | default: 'main' }}" name="name" placeholder="First name (optional)" autocomplete="given-name">
+      <input id="nl-name-{{ include.id | default: 'main' }}" name="name" placeholder="First name" autocomplete="given-name">
       <label class="sr-only" for="nl-email-{{ include.id | default: 'main' }}">Email</label>
       <input id="nl-email-{{ include.id | default: 'main' }}" type="email" name="email" placeholder="Work email" autocomplete="email" required>
-      <button class="btn btn--gold" type="submit">Subscribe <i data-icon="arrow"></i></button>
     </div>
     <label class="newsletter__consent">
       <input type="checkbox" name="consent" value="Yes" required>
       <span>I agree to receive emails from Veltriq Alliance. I can unsubscribe at any time. See our <a href="/privacy.html">privacy notice</a>.</span>
     </label>
+    <button class="btn btn--gold newsletter__submit" type="submit">Subscribe <i data-icon="arrow"></i></button>
     <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
     <p class="form-msg" aria-live="polite"></p>
   </form>
