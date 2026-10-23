@@ -5,8 +5,6 @@ url: https://www.veltriqalliance.com.ng
 baseurl: ""
 timezone: Africa/Lagos
 
-# Blog posts live in _posts/ and are published at /blog/<post-title>/
-permalink: /blog/:title/
 markdown: kramdown
 kramdown:
   input: GFM
@@ -19,11 +17,15 @@ plugins:
 feed:
   path: blog/feed.xml
 
+# Blog posts live in _posts/ and are published at /blog/<post-title>/.
+# (Set here rather than as the site-wide permalink, which would also move
+# services.html etc. to /services/.)
 defaults:
   - scope:
       path: ""
       type: posts
     values:
+      permalink: /blog/:title/
       layout: post
       author: Veltriq Alliance Team
 
