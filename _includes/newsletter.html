@@ -1,0 +1,22 @@
+<section class="newsletter reveal" aria-labelledby="newsletter-title">
+  <div class="newsletter__text">
+    <span class="eyebrow">Newsletter</span>
+    <h2 id="newsletter-title">Practical IT and cyber security insights, in your inbox</h2>
+    <p>New articles, security alerts that matter to Nigerian businesses, and tips from our engineers. No spam. Unsubscribe anytime.</p>
+  </div>
+  <form class="newsletter__form" data-newsletter-form novalidate>
+    <div class="newsletter__fields">
+      <label class="sr-only" for="nl-name-{{ include.id | default: 'main' }}">First name</label>
+      <input id="nl-name-{{ include.id | default: 'main' }}" name="name" placeholder="First name (optional)" autocomplete="given-name">
+      <label class="sr-only" for="nl-email-{{ include.id | default: 'main' }}">Email</label>
+      <input id="nl-email-{{ include.id | default: 'main' }}" type="email" name="email" placeholder="Work email" autocomplete="email" required>
+      <button class="btn btn--gold" type="submit">Subscribe <i data-icon="arrow"></i></button>
+    </div>
+    <label class="newsletter__consent">
+      <input type="checkbox" name="consent" value="Yes" required>
+      <span>I agree to receive emails from Veltriq Alliance. I can unsubscribe at any time. See our <a href="/privacy.html">privacy notice</a>.</span>
+    </label>
+    <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
+    <p class="form-msg" aria-live="polite"></p>
+  </form>
+</section>

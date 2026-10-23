@@ -1,0 +1,64 @@
+# Pages CMS configuration (https://app.pagescms.org).
+# Gives the team a visual editor for blog posts; changes are saved to _posts/.
+media:
+  input: assets/img/blog
+  output: /assets/img/blog
+  rename: safe
+  categories: [image]
+
+content:
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, category, date]
+      primary: title
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+        options:
+          maxlength: 110
+      - name: description
+        label: Summary
+        description: One or two sentences. Shown on the blog page, in Google results and when the post is shared.
+        type: text
+        required: true
+        options:
+          maxlength: 300
+      - name: date
+        label: Publish date
+        description: Use today's date. A post dated in the future stays hidden until the site is next updated on or after that date.
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values: [Cyber Security, Networking, Datacenter & Infrastructure, Managed Support, Systems Integration, Company News]
+      - name: author
+        label: Author
+        type: string
+        default: Veltriq Alliance Team
+      - name: image
+        label: Cover image (optional)
+        description: Landscape image, ideally 1600 × 900 pixels. Leave empty to use the branded cover.
+        type: image
+      - name: image_alt
+        label: Cover image description
+        description: Briefly describe the image for screen readers.
+        type: string
+      - name: body
+        label: Article
+        type: rich-text
+        options:
+          format: markdown

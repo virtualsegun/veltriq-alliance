@@ -1,0 +1,20 @@
+# Blog categories. `icon` is a name from ICONS in assets/js/main.js;
+# `service` is the matching section on the services page.
+- name: Cyber Security
+  icon: shield
+  service: security
+- name: Networking
+  icon: network
+  service: networking
+- name: Datacenter & Infrastructure
+  icon: datacenter
+  service: datacenter
+- name: Managed Support
+  icon: support
+  service: managed
+- name: Systems Integration
+  icon: integration
+  service: integration
+- name: Company News
+  icon: award
+  service: ""

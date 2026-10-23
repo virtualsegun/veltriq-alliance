@@ -11,10 +11,22 @@ const SITE = {
   phoneHref: "+2349160373651",
   whatsapp: "2349160373651", // international format, digits only; "" hides the button
   address: "10 Agbaoku Street, Allen, Ikeja, Lagos, Nigeria",
-  // Optional form backend (e.g. a Formspree endpoint). Empty = the form opens
-  // the visitor's email app with the enquiry pre-filled.
-  formEndpoint: "",
+  // Google Apps Script web app URL that saves form submissions to a Google
+  // Sheet (see tools/google-sheet-forms.gs). Empty = forms fall back to
+  // opening the visitor's email app with the details pre-filled.
+  sheetEndpoint: "",
 };
+
+// Sends a form to the Google Sheet endpoint. Apps Script doesn't return CORS
+// headers, so the request is sent "no-cors": we can't read the reply, and a
+// network failure is the only error we can detect.
+function postToSheet(fields) {
+  return fetch(SITE.sheetEndpoint, {
+    method: "POST",
+    mode: "no-cors",
+    body: new URLSearchParams(fields),
+  });
+}
 
 // ---------------------------------------------------------------------------
 // Icons (24×24, stroke). Use <i data-icon="name"></i> in the HTML.
@@ -141,7 +153,7 @@ const PARTNERS = [
 
 function partnerMark(p) {
   return p.logo
-    ? `<img src="assets/img/partners/${p.logo}" alt="${p.name}" loading="lazy">`
+    ? `<img src="/assets/img/partners/${p.logo}" alt="${p.name}" loading="lazy">`
     : `<span class="partner__word">${p.name}</span>`;
 }
 
@@ -603,12 +615,21 @@ function initContactForm() {
     ];
     const btn = form.querySelector("[type=submit]");
 
-    if (SITE.formEndpoint) {
+    if (SITE.sheetEndpoint) {
       btn.disabled = true;
       btn.textContent = "Sending…";
       try {
-        const res = await fetch(SITE.formEndpoint, { method: "POST", body: data, headers: { Accept: "application/json" } });
-        if (!res.ok) throw new Error(res.statusText);
+        await postToSheet({
+          type: "contact",
+          name: data.get("name"),
+          company: data.get("company") || "",
+          email: data.get("email"),
+          phone: data.get("phone") || "",
+          services: services.join(", "),
+          timeline: data.get("timeline") || "",
+          message: data.get("message"),
+          page: location.pathname,
+        });
         showSuccess(false);
       } catch {
         btn.disabled = false;
@@ -637,6 +658,81 @@ function initContactForm() {
 }
 
 // ---------------------------------------------------------------------------
+// Newsletter signup (blog page, end of each post, footer)
+// ---------------------------------------------------------------------------
+function initNewsletter() {
+  document.querySelectorAll("[data-newsletter-form]").forEach((form) => {
+    const msg = form.querySelector(".form-msg");
+    const say = (text, ok) => {
+      msg.textContent = text;
+      msg.className = `form-msg ${ok ? "form-msg--ok" : "form-msg--err"}`;
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      if (data.get("website")) return; // honeypot
+      const email = String(data.get("email") || "").trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        say("Please enter a valid email address.", false);
+        form.elements.email.focus();
+        return;
+      }
+      const consent = form.querySelector('input[type="checkbox"][name="consent"]');
+      if (consent && !consent.checked) {
+        say("Please tick the box to confirm you'd like to receive our emails.", false);
+        consent.focus();
+        return;
+      }
+
+      if (!SITE.sheetEndpoint) {
+        const body = `Please add me to the Veltriq Alliance newsletter.\n\nEmail: ${email}\nName: ${data.get("name") || "-"}`;
+        window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent("Newsletter subscription")}&body=${encodeURIComponent(body)}`;
+        say("Your email app should open with your request ready to send.", true);
+        return;
+      }
+
+      const btn = form.querySelector("[type=submit]");
+      btn.disabled = true;
+      try {
+        await postToSheet({
+          type: "newsletter",
+          email,
+          name: data.get("name") || "",
+          consent: data.get("consent") || "Yes",
+          page: location.pathname,
+        });
+        form.reset();
+        say("Thank you for subscribing. Watch your inbox for our next issue.", true);
+      } catch {
+        say(`Sorry, something went wrong. Please email ${SITE.email} to subscribe.`, false);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Blog: filter posts by category
+// ---------------------------------------------------------------------------
+function initBlogFilter() {
+  const bar = document.querySelector("[data-blog-filter]");
+  const grid = document.querySelector("[data-blog-grid]");
+  if (!bar || !grid) return;
+  bar.addEventListener("click", (e) => {
+    const btn = e.target.closest(".blog-filter__btn");
+    if (!btn) return;
+    bar.querySelectorAll(".blog-filter__btn").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    const cat = btn.dataset.cat;
+    grid.querySelectorAll(".post-card").forEach((card) => {
+      card.hidden = Boolean(cat) && card.dataset.category !== cat;
+      card.classList.add("is-visible");
+    });
+  });
+}
+
+// ---------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   renderIcons();
   fillSiteDetails();
@@ -649,5 +745,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScan();
   initScrollSpy();
   initContactForm();
+  initNewsletter();
+  initBlogFilter();
   initWhatsApp();
 });

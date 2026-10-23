@@ -1,0 +1,45 @@
+---
+layout: default
+title: Blog
+head_title: Blog | IT & Cyber Security Insights | Veltriq Alliance
+description: Practical articles on cyber security, networking, datacenter infrastructure and IT support for businesses in Nigeria, from the engineers at Veltriq Alliance.
+nav: blog
+---
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="/">Home</a> / Blog</div>
+        <span class="eyebrow">Insights</span>
+        <h1>The Veltriq Alliance blog</h1>
+        <p class="lead">Practical advice on keeping your business technology secure, fast and running, from our engineers in Lagos.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        {%- assign used = site.posts | map: "category" | uniq -%}
+        <div class="blog-filter" role="group" aria-label="Filter by category" data-blog-filter>
+          <button type="button" class="blog-filter__btn" aria-pressed="true" data-cat="">All</button>
+          {%- for c in site.data.categories %}
+          {%- if used contains c.name %}
+          <button type="button" class="blog-filter__btn" aria-pressed="false" data-cat="{{ c.name | escape }}">{{ c.name }}</button>
+          {%- endif %}
+          {%- endfor %}
+        </div>
+
+        {%- if site.posts.size > 0 %}
+        <div class="post-grid" data-blog-grid>
+          {%- for p in site.posts %}
+          {% include post-card.html post=p %}
+          {%- endfor %}
+        </div>
+        {%- else %}
+        <p class="lead">Our first articles are on the way. Subscribe below to get them first.</p>
+        {%- endif %}
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="container">
+        {% include newsletter.html id="blog" %}
+      </div>
+    </section>

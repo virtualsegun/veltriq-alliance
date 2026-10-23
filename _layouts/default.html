@@ -1,0 +1,122 @@
+<!doctype html>
+{%- assign head_title = page.head_title | default: page.title | append: " | Veltriq Alliance" -%}
+{%- if page.head_title -%}{%- assign head_title = page.head_title -%}{%- endif -%}
+{%- assign description = page.description | default: site.description | strip_html | strip_newlines | truncate: 300 -%}
+{%- if page.image -%}{%- assign share_image = page.image | absolute_url -%}{%- else -%}{%- assign share_image = "/assets/img/og-image.jpg" | absolute_url -%}{%- endif %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.className += " js";</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ head_title }}</title>
+  <meta name="description" content="{{ description | escape }}">
+  <meta name="theme-color" content="#0a224e">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="Veltriq Alliance">
+  <meta property="og:title" content="{{ page.og_title | default: head_title | escape }}">
+  <meta property="og:description" content="{{ description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ share_image }}">
+  {%- unless page.image %}
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {%- endunless %}
+  <meta property="og:locale" content="en_NG">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+  <link rel="alternate" type="application/atom+xml" title="Veltriq Alliance blog" href="/blog/feed.xml">
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  {%- if page.url == "/" %}
+  {% include schema-organization.html %}
+  {%- endif %}
+  {%- if page.layout == "post" %}
+  {% include schema-article.html %}
+  {%- endif %}
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/" aria-label="Veltriq Alliance home">
+        <img class="logo-light" src="/assets/img/mark-light.png" alt="" width="54" height="40">
+        <img class="logo-dark" src="/assets/img/mark.png" alt="" width="54" height="40">
+        <span class="brand__text"><span class="brand__name">VELTRIQ</span><span class="brand__sub">ALLIANCE</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i data-icon="menu"></i></button>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <a class="nav__link" href="/"{% if page.nav == "home" %} aria-current="page"{% endif %}>Home</a>
+        <a class="nav__link" href="/services.html"{% if page.nav == "services" %} aria-current="page"{% endif %}>Services</a>
+        <a class="nav__link" href="/about.html"{% if page.nav == "about" %} aria-current="page"{% endif %}>About</a>
+        <a class="nav__link" href="/blog/"{% if page.nav == "blog" or page.layout == "post" %} aria-current="page"{% endif %}>Blog</a>
+        <a class="nav__link" href="/#security-check">Security check</a>
+        <a class="nav__link" href="/contact.html"{% if page.nav == "contact" %} aria-current="page"{% endif %}>Contact</a>
+        <a class="btn btn--gold" href="/contact.html">Get a quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+{{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="/assets/img/logo-light.png" alt="Veltriq Alliance" width="150" height="116">
+          <p>IT systems integration, managed support, datacenter, networking and cyber security for businesses across Nigeria.</p>
+          <form class="footer-subscribe" data-newsletter-form novalidate>
+            <label for="footer-email" class="footer-subscribe__label">Get our newsletter</label>
+            <div class="footer-subscribe__row">
+              <input id="footer-email" type="email" name="email" placeholder="Your email" autocomplete="email" required>
+              <button class="btn btn--gold" type="submit">Subscribe</button>
+            </div>
+            <input type="hidden" name="consent" value="Yes (footer form)">
+            <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
+            <p class="footer-subscribe__note">By subscribing you agree to receive emails from us. Unsubscribe anytime. <a href="/privacy.html">Privacy</a></p>
+            <p class="form-msg" aria-live="polite"></p>
+          </form>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services.html#integration">Systems Integration</a></li>
+            <li><a href="/services.html#managed">Managed Support</a></li>
+            <li><a href="/services.html#datacenter">Datacenter &amp; Infrastructure</a></li>
+            <li><a href="/services.html#networking">Networking</a></li>
+            <li><a href="/services.html#security">Cyber Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about.html">About us</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#security-check">Security check</a></li>
+            <li><a href="/#finder">Service finder</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul class="footer-contact">
+            <li><i data-icon="pin"></i><a data-href="map" href="https://www.google.com/maps/search/?api=1&amp;query=10%20Agbaoku%20Street%2C%20Allen%2C%20Ikeja%2C%20Lagos%2C%20Nigeria" target="_blank" rel="noopener"><span data-site="address">10 Agbaoku Street, Allen, Ikeja, Lagos, Nigeria</span></a></li>
+            <li><i data-icon="phone"></i><a data-site="phone" href="tel:+2349160373651">+234 (0) 916 037 3651</a></li>
+            <li><i data-icon="mail"></i><a data-site="email" href="mailto:sales@veltriqalliance.com.ng">sales@veltriqalliance.com.ng</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span data-site="year">{{ site.time | date: "%Y" }}</span> Veltriq Alliance. All rights reserved. &middot; <a href="/privacy.html">Privacy notice</a></span>
+        <span>Ikeja, Lagos, Nigeria</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

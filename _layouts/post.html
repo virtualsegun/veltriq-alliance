@@ -1,0 +1,75 @@
+---
+layout: default
+---
+{%- assign cat = site.data.categories | where: "name", page.category | first -%}
+{%- assign minutes = content | number_of_words | divided_by: 200 | plus: 1 -%}
+{%- assign share_url = page.url | absolute_url | url_encode -%}
+{%- assign share_text = page.title | url_encode -%}
+    <section class="page-hero page-hero--post">
+      <div class="container container--narrow">
+        <div class="crumbs"><a href="/">Home</a> / <a href="/blog/">Blog</a>{% if page.category %} / {{ page.category }}{% endif %}</div>
+        {%- if page.category %}
+        <span class="eyebrow">{{ page.category }}</span>
+        {%- endif %}
+        <h1>{{ page.title }}</h1>
+        {%- if page.description %}
+        <p class="lead">{{ page.description }}</p>
+        {%- endif %}
+        <div class="post-meta">
+          <span class="post-meta__avatar"><img src="/assets/img/mark-light.png" alt="" width="27" height="20"></span>
+          <span><strong>{{ page.author }}</strong><br>{{ page.date | date: "%-d %B %Y" }} &middot; {{ minutes }} min read</span>
+        </div>
+      </div>
+    </section>
+
+    <article class="section post">
+      <div class="container container--narrow">
+        {%- if page.image %}
+        <img class="post__cover" src="{{ page.image }}" alt="{{ page.image_alt | default: '' | escape }}">
+        {%- endif %}
+        <div class="prose">
+{{ content }}
+        </div>
+
+        <div class="post-share">
+          <span>Share this article</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url }}" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://wa.me/?text={{ share_text }}%20{{ share_url }}" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://twitter.com/intent/tweet?url={{ share_url }}&amp;text={{ share_text }}" target="_blank" rel="noopener">X</a>
+          <a href="mailto:?subject={{ share_text }}&amp;body={{ share_url }}">Email</a>
+        </div>
+
+        {%- if cat.service and cat.service != "" %}
+        <aside class="post-cta">
+          <span class="icon-badge"><i data-icon="{{ cat.icon }}"></i></span>
+          <div>
+            <h3>Need help with {{ page.category | downcase }}?</h3>
+            <p>Our engineers can assess where you are today and recommend practical next steps.</p>
+          </div>
+          <a class="btn btn--primary" href="/contact.html?service={{ cat.service }}&amp;topic={{ page.title | url_encode }}">Talk to us <i data-icon="arrow"></i></a>
+        </aside>
+        {%- endif %}
+
+        {% include newsletter.html id="post" %}
+      </div>
+    </article>
+
+    {%- assign related = site.posts | where: "category", page.category | where_exp: "p", "p.url != page.url" -%}
+    {%- if related.size < 3 -%}
+      {%- assign related = site.posts | where_exp: "p", "p.url != page.url" -%}
+    {%- endif -%}
+    {%- if related.size > 0 %}
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Keep reading</span>
+          <h2>More from the blog</h2>
+        </div>
+        <div class="post-grid">
+          {%- for p in related limit: 3 %}
+          {% include post-card.html post=p %}
+          {%- endfor %}
+        </div>
+      </div>
+    </section>
+    {%- endif %}

@@ -1,0 +1,17 @@
+{%- assign p = include.post -%}
+{%- assign cat = site.data.categories | where: "name", p.category | first -%}
+<a class="post-card reveal" href="{{ p.url }}" data-category="{{ p.category | escape }}">
+  <div class="post-card__cover{% unless p.image %} post-card__cover--art{% endunless %}">
+    {%- if p.image %}
+    <img src="{{ p.image }}" alt="" loading="lazy">
+    {%- else %}
+    <i data-icon="{{ cat.icon | default: 'layers' }}"></i>
+    {%- endif %}
+  </div>
+  <div class="post-card__body">
+    <span class="post-card__cat">{{ p.category | default: "Insights" }}</span>
+    <h3>{{ p.title }}</h3>
+    <p>{{ p.description | strip_html | truncate: 150 }}</p>
+    <span class="post-card__meta">{{ p.date | date: "%-d %b %Y" }} &middot; {{ p.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+  </div>
+</a>

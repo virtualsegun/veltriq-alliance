@@ -1,0 +1,33 @@
+# Site settings for GitHub Pages (Jekyll).
+title: Veltriq Alliance
+description: IT systems integration, managed support, datacenter and infrastructure, networking and cyber security for businesses in Lagos and across Nigeria.
+url: https://www.veltriqalliance.com.ng
+baseurl: ""
+timezone: Africa/Lagos
+
+# Blog posts live in _posts/ and are published at /blog/<post-title>/
+permalink: /blog/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+feed:
+  path: blog/feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Veltriq Alliance Team
+
+exclude:
+  - README.md
+  - BLOG-GUIDE.md
+  - tools/
