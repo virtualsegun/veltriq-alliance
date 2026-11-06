@@ -35,7 +35,7 @@ To edit or delete a post later, open it from the **Blog posts** list.
 - End with a short paragraph linking to the relevant service, for example `/services.html#security` or `/contact.html?service=security`.
 - Only use images you own or have the right to use.
 
-## Option 2: Ask Claude (or a developer) to publish
+## Option 2: Send the post to your web developer
 
 Send the text (a Word document is fine) and say which category it belongs to. Posts are Markdown files in `_posts/` named `YYYY-MM-DD-short-title.md`, starting with:
 
