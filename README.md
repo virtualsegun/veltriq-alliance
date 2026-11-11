@@ -14,6 +14,7 @@ Built with Jekyll on GitHub Pages: plain HTML pages plus a Markdown blog. GitHub
 | `contact.html` | Contact details, map and enquiry form |
 | `blog/index.html` | Blog listing with category filter and newsletter signup |
 | `privacy.html` | Privacy notice for the contact and newsletter forms |
+| `careers.html` | Careers page, linked from the footer only |
 
 The shared header, footer and page head are in `_layouts/default.html`; blog posts use `_layouts/post.html`. Posts live in `_posts/`. See **BLOG-GUIDE.md** for how to publish posts and connect the newsletter.
 
