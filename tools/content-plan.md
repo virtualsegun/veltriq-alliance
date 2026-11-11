@@ -78,7 +78,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 - [ ] Why your Wi-Fi is slow and how to fix it
 
 ### Datacenter & Infrastructure
-- [ ] The 3-2-1 backup rule and why every business needs it
+- [x] The 3-2-1 backup rule and why every business needs it (2026-11-11-3-2-1-backup-rule-for-business.md)
 - [ ] Cloud, on-premises or hybrid: choosing where your systems should live
 - [ ] Choosing a UPS: sizing, runtime and battery types
 - [ ] Virtualisation explained: getting more from fewer servers
