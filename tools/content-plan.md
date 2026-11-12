@@ -91,7 +91,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 - [ ] Testing your backups: why a backup you have never restored is a risk
 
 ### Managed Support
-- [ ] What managed IT services include, and what they cost
+- [x] What managed IT services include, and what they cost (2026-11-12-managed-it-services-nigeria-what-they-include.md)
 - [ ] Signs you have outgrown ad hoc IT support
 - [ ] How to write an IT support contract and service level agreement
 - [ ] Proactive vs reactive IT support: the real cost of waiting for things to break
