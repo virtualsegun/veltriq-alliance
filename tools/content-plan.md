@@ -64,7 +64,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 - [ ] Cyber security for hospitals and clinics: protecting patient data
 
 ### Networking
-- [ ] Structured cabling: why it matters for a reliable office network
+- [x] Structured cabling: why it matters for a reliable office network (2026-11-17-structured-cabling-for-a-reliable-office-network.md)
 - [ ] Planning Wi-Fi for a new office: what a site survey tells you
 - [ ] Internet redundancy: keeping your business online when a fibre link fails
 - [ ] SD-WAN explained for businesses with multiple branches
