@@ -79,7 +79,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 
 ### Datacenter & Infrastructure
 - [x] The 3-2-1 backup rule and why every business needs it (2026-11-11-3-2-1-backup-rule-for-business.md)
-- [ ] Cloud, on-premises or hybrid: choosing where your systems should live
+- [x] Cloud, on-premises or hybrid: choosing where your systems should live (2026-11-18-hybrid-cloud-nigeria-cloud-or-on-premises.md)
 - [ ] Choosing a UPS: sizing, runtime and battery types
 - [ ] Virtualisation explained: getting more from fewer servers
 - [ ] Disaster recovery planning: RTO and RPO in plain English
