@@ -103,7 +103,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 - [ ] IT documentation: why it matters when staff leave
 
 ### Systems Integration
-- [ ] Migrating to Microsoft 365: a step-by-step plan
+- [x] Migrating to Microsoft 365: a step-by-step plan (2026-11-20-microsoft-365-migration-nigeria-step-by-step.md)
 - [ ] Single sign-on explained: one login for all your business apps
 - [ ] Integrating your ERP, CRM and accounting systems
 - [ ] Moving from on-premises Active Directory to Entra ID
