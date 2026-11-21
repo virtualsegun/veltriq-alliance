@@ -42,7 +42,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 
 ### Cyber Security
 - [x] How to spot a phishing email: a checklist for your staff (2026-11-16-how-to-spot-a-phishing-email-checklist.md)
-- [ ] Ransomware protection for Nigerian businesses: where to start
+- [x] Ransomware protection for Nigerian businesses: where to start (2026-11-21-ransomware-protection-for-nigerian-businesses.md)
 - [ ] Multi-factor authentication: why passwords alone are no longer enough
 - [ ] Business email compromise: how fake invoice scams work and how to stop them
 - [ ] Firewall vs antivirus: what each one does and why you need both
