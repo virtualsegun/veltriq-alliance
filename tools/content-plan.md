@@ -114,7 +114,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 - [ ] Planning an IT project: from requirements to go-live
 
 ### Explainers (Sunday)
-- [ ] What is a firewall?
+- [x] What is a firewall? (2026-11-22-what-is-a-firewall-firewall-installation-lagos.md)
 - [ ] What is the cloud, really?
 - [ ] What is a VPN and does your business need one?
 - [ ] What is zero trust security?
