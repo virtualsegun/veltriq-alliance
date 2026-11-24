@@ -65,7 +65,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 
 ### Networking
 - [x] Structured cabling: why it matters for a reliable office network (2026-11-17-structured-cabling-for-a-reliable-office-network.md)
-- [ ] Planning Wi-Fi for a new office: what a site survey tells you
+- [x] Planning Wi-Fi for a new office: what a site survey tells you (2026-11-24-wireless-site-survey-enterprise-wifi-nigeria.md)
 - [ ] Internet redundancy: keeping your business online when a fibre link fails
 - [ ] SD-WAN explained for businesses with multiple branches
 - [ ] Managed vs unmanaged switches: which does your office need?
