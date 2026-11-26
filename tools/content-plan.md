@@ -93,7 +93,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 ### Managed Support
 - [x] What managed IT services include, and what they cost (2026-11-12-managed-it-services-nigeria-what-they-include.md)
 - [x] Signs you have outgrown ad hoc IT support (2026-11-19-outgrown-ad-hoc-it-support-signs.md)
-- [ ] How to write an IT support contract and service level agreement
+- [x] How to write an IT support contract and service level agreement (2026-11-26-it-maintenance-contract-service-level-agreement.md)
 - [ ] Proactive vs reactive IT support: the real cost of waiting for things to break
 - [ ] IT asset management: knowing what you own and when it expires
 - [ ] Onboarding and offboarding staff: an IT checklist
