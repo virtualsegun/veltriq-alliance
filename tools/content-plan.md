@@ -104,7 +104,7 @@ Tick a topic (`[x]`) when its post is published. Add the post's file name after 
 
 ### Systems Integration
 - [x] Migrating to Microsoft 365: a step-by-step plan (2026-11-20-microsoft-365-migration-nigeria-step-by-step.md)
-- [ ] Single sign-on explained: one login for all your business apps
+- [x] Single sign-on explained: one login for all your business apps (2026-11-27-single-sign-on-explained-for-business.md)
 - [ ] Integrating your ERP, CRM and accounting systems
 - [ ] Moving from on-premises Active Directory to Entra ID
 - [ ] Choosing business email: Microsoft 365, Google Workspace or Zoho
